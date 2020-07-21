@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 
 class DatePicker extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _DatePickerState extends State<DatePicker> {
           children: <Widget>[
             Text(
               'BIRTHDAY',
-              style: TextStyle(letterSpacing: 2.0, fontFamily: 'Montserrat'),
+              style: TextStyle(letterSpacing: 2.0, fontFamily: fontName),
             ),
             Text(
               new DateFormat('d MMM y').format(date),
@@ -47,7 +48,7 @@ class _DatePickerState extends State<DatePicker> {
                   letterSpacing: 2.0,
                   color: Color(0xff353535),
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'),
+                  fontFamily: fontName),
             )
           ],
         ),

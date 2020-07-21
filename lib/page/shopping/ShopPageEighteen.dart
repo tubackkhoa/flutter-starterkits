@@ -24,6 +24,7 @@ class _ShopEighteenState extends State<ShopPageEighteen> {
         color: Colors.white,
         onPressed: () {
           print("Go Back");
+          Navigator.pop(context);
         },
       )),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_places_picker/google_places_picker.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 
 class LocationPicker extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _LocationPickerState extends State<LocationPicker> {
           children: <Widget>[
             Text(
               'LOCATION',
-              style: TextStyle(letterSpacing: 2.0, fontFamily: 'Montserrat'),
+              style: TextStyle(letterSpacing: 2.0, fontFamily: fontName),
             ),
             Flexible(
               child: Padding(
@@ -47,7 +48,7 @@ class _LocationPickerState extends State<LocationPicker> {
                       color: Color(0xff353535),
                       fontSize: 12.0,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat'),
+                      fontFamily: fontName),
                   overflow: TextOverflow.fade,
                 ),
               ),

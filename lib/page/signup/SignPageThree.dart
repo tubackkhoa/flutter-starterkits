@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_nice/const/color_const.dart';
 import 'package:flutter_ui_nice/const/gradient_const.dart';
 import 'package:flutter_ui_nice/const/images_const.dart';
-import 'package:flutter_ui_nice/const/size_const.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 import 'package:flutter_ui_nice/const/string_const.dart';
-import 'dart:io';
+// import 'dart:io';
 
 import 'package:flutter_ui_nice/page/signup/widgets/signup_arrow_button.dart';
-import '../../const/icons.dart';
+import 'package:flutter_ui_nice/const/icons.dart';
+import 'package:flutter_ui_nice/const/page_str_const.dart';
 
 class SignPageThree extends StatefulWidget {
   @override
@@ -84,7 +85,7 @@ class _SignPageThreeState extends State<SignPageThree> {
                                   Text(
                                     'Log in\nto continue.',
                                     style: TextStyle(
-                                        fontFamily: "Montserrat",
+                                        fontFamily: fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 32),
                                   ),
@@ -201,7 +202,10 @@ class _SignPageThreeState extends State<SignPageThree> {
                   child: SignUpArrowButton(
                     icon: IconData(arrow_right, fontFamily: 'Icons'),
                     iconSize: 8,
-                    onTap: () => print("Signup Tapped"),
+                    onTap: () {
+                      print("Signup Page 3 Tapped");
+                      Navigator.pushReplacementNamed(context, SIGN_UP_PAGES[3]);
+                    },
                   )),
               Positioned(
                 top: _media.height / 1.7 + _media.height / 7 - 10,
@@ -209,7 +213,7 @@ class _SignPageThreeState extends State<SignPageThree> {
                 child: Text(
                   'NEXT',
                   style: TextStyle(
-                      fontFamily: "Montserrat",
+                      fontFamily: fontName,
                       fontWeight: FontWeight.w800,
                       fontSize: 16),
                 ),
@@ -239,7 +243,7 @@ Widget inputText(String hintText, TextEditingController controller,
         hintText: hintText,
         hintStyle: TextStyle(
             color: Color(0xff353535),
-            fontFamily: "Montserrat",
+            fontFamily: fontName,
             fontWeight: FontWeight.bold,
             fontSize: 16.0)),
     obscureText: obSecure,

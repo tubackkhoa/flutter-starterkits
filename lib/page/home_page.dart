@@ -13,9 +13,19 @@ import 'package:flutter_ui_nice/const/images_const.dart';
 import 'package:flutter_ui_nice/const/color_const.dart';
 import 'package:flutter_ui_nice/util/SizeUtil.dart';
 import 'package:flutter_ui_nice/util/GradientUtil.dart';
+import 'package:flutter_ui_nice/view/BottomBarView.dart';
+import 'package:flutter_ui_nice/view/drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final _scaffoldState = GlobalKey<ScaffoldState>();
+
+  AnimationController animationController;
+  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   Widget _topBar() => SliverAppBar(
         elevation: 1.0,
@@ -26,6 +36,7 @@ class HomePage extends StatelessWidget {
           title: Padding(
             padding: EdgeInsets.only(top: 30.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
                   MainImagePath.image_app,
@@ -130,27 +141,27 @@ class HomePage extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (context) => Material(
-            color: GREEN,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
+        color: GREEN,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            _header(),
+            Expanded(
+              child: Container(
+                child: _menuList(menu),
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                _header(),
-                Expanded(
-                  child: Container(
-                    child: _menuList(menu),
-                  ),
-                ),
-                AboutMeTitle(),
-              ],
-            ),
-          ),
+            AboutMeTitle(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -251,7 +262,12 @@ class HomePage extends StatelessWidget {
       builder: (context, shot) {
         return shot.hasData
             ? CustomScrollView(
-                slivers: <Widget>[_topBar(), _gridView(context, shot.data)],
+                slivers: <Widget>[
+                  _topBar(),
+                  SliverPadding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 60),
+                      sliver: _gridView(context, shot.data))
+                ],
               )
             : Center(
                 child: CircularProgressIndicator(),
@@ -261,14 +277,71 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget bottomBar() {
+    return Column(
+      children: <Widget>[
+        const Expanded(
+          child: SizedBox(),
+        ),
+        BottomBarView(
+          tabIconsList: tabIconsList,
+          addClick: () {},
+          changeIndex: (int index) {
+            if (index == 0 || index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  // tabBody =
+                  //     MyDiaryScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 1 || index == 3) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  // tabBody =
+                  //     TrainingScreen(animationController: animationController);
+                });
+              });
+            }
+          },
+        ),
+      ],
+    );
+  }
+
   Widget _showAndroid(context) {
     return Theme(
-      data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+      data: Theme.of(context).copyWith(canvasColor: BLUE_DEEP),
       child: Scaffold(
+        drawer: AppDrawer(),
         key: _scaffoldState,
-        body: _streamBuild(context),
+        body: Stack(children: [_streamBuild(context), bottomBar()]),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    tabIconsList.forEach((TabIconData tab) {
+      tab.isSelected = false;
+    });
+    tabIconsList[0].isSelected = true;
+
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 600), vsync: this);
+    // tabBody = MyDiaryScreen(animationController: animationController);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override

@@ -5,6 +5,7 @@
 ///
 import "package:flutter/material.dart";
 import '../../const/gradient_const.dart';
+import '../../const/page_str_const.dart';
 import '../../const/styles.dart';
 
 class SignPageOne extends StatelessWidget {
@@ -28,8 +29,8 @@ class SignPageOne extends StatelessWidget {
             headlinesWidget(),
             emailTextFieldWidget(),
             passwordTextFieldWidget(),
-            loginButtonWidget(),
-            signupWidget()
+            loginButtonWidget(context),
+            signupWidget(context),
           ],
         ),
       ),
@@ -37,18 +38,19 @@ class SignPageOne extends StatelessWidget {
   }
 }
 
-Widget signupWidget() {
+Widget signupWidget(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(left: 48.0, top: 32.0),
     child: Row(
       children: <Widget>[
         Text(
           'Don\'t have an account?',
-          style: TextStyle(fontFamily: 'Montserrat'),
+          style: TextStyle(fontFamily: fontName),
         ),
         FlatButton(
           onPressed: () {
             print('Sign Up button pressed');
+            Navigator.pushReplacementNamed(context, SIGN_UP_PAGES[1]);
           },
           child: Text(
             'Sign Up',
@@ -56,7 +58,7 @@ Widget signupWidget() {
                 color: Color(0xff353535),
                 decoration: TextDecoration.underline,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Montserrat'),
+                fontFamily: fontName),
           ),
         )
       ],
@@ -134,7 +136,7 @@ Widget headlinesWidget() {
           style: TextStyle(
               letterSpacing: 3,
               fontSize: 20.0,
-              fontFamily: 'Montserrat',
+              fontFamily: fontName,
               fontWeight: FontWeight.bold),
         ),
         Container(
@@ -145,7 +147,7 @@ Widget headlinesWidget() {
             style: TextStyle(
               letterSpacing: 3,
               fontSize: 32.0,
-              fontFamily: 'Montserrat',
+              fontFamily: fontName,
             ),
           ),
         )
@@ -154,13 +156,15 @@ Widget headlinesWidget() {
   );
 }
 
-Widget loginButtonWidget() {
+Widget loginButtonWidget(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(left: 32.0, top: 32.0),
     child: Row(
       children: <Widget>[
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 36.0, vertical: 16.0),
             decoration: BoxDecoration(
@@ -186,7 +190,7 @@ Widget loginButtonWidget() {
               style: TextStyle(
                   color: Color(0xffF1EA94),
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'),
+                  fontFamily: fontName),
             ),
           ),
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_nice/const/gradient_const.dart';
 import 'package:flutter_ui_nice/const/icons.dart';
-import 'package:flutter_ui_nice/const/size_const.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_arrow_button.dart';
 import 'dart:async';
+import 'package:flutter_ui_nice/const/styles.dart';
 import 'package:google_places_picker/google_places_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -296,7 +296,7 @@ class _SignPageSevenState extends State<SignPageSeven> {
                   color: Color(0xff353535),
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'),
+                  fontFamily: fontName),
               overflow: TextOverflow.fade,
             ),
           ),
@@ -329,7 +329,7 @@ class _SignPageSevenState extends State<SignPageSeven> {
                   color: Color(0xff353535),
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'),
+                  fontFamily: fontName),
               overflow: TextOverflow.fade,
             ),
           ),
@@ -362,7 +362,7 @@ class _SignPageSevenState extends State<SignPageSeven> {
               color: Color(0xff353535),
               fontSize: 12.0,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Montserrat',
+              fontFamily: fontName,
             ),
             suffixIcon: Padding(
               padding: const EdgeInsets.only(left: 25.0),
@@ -398,7 +398,7 @@ class _SignPageSevenState extends State<SignPageSeven> {
               color: Color(0xff353535),
               fontSize: 12.0,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Montserrat',
+              fontFamily: fontName,
             ),
             isExpanded: true,
             onChanged: change,

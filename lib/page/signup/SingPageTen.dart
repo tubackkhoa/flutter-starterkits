@@ -97,7 +97,7 @@ class _SignPageTeenState extends State<SignPageTeen>
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
-                      fontFamily: 'Montserrat',
+                      fontFamily: fontName,
                     ),
                   ),
                   SizedBox(
@@ -188,7 +188,7 @@ class _SignPageTeenState extends State<SignPageTeen>
             style: TextStyle(
                 color: Color(0xffF1EA94),
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Montserrat'),
+                fontFamily: fontName),
           ),
         ),
       ),

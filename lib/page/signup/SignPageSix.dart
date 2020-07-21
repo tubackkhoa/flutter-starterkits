@@ -6,6 +6,7 @@ import 'package:flutter_ui_nice/const/images_const.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_6_box.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_arrow_button.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_const.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 
 class SignPageSix extends StatefulWidget {
   SignPageSix({Key key}) : super(key: key);
@@ -278,14 +279,14 @@ class _SignPageSixState extends State<SignPageSix>
           Text(
             'Sign in',
             style: TextStyle(
-                fontFamily: "Montserrat",
+                fontFamily: fontName,
                 fontWeight: FontWeight.w200,
                 fontSize: 35),
           ),
           Text(
             'to continue.',
             style: TextStyle(
-                fontFamily: "Montserrat",
+                fontFamily: fontName,
                 fontWeight: FontWeight.w200,
                 fontSize: 35),
           ),
@@ -329,14 +330,14 @@ class _SignPageSixState extends State<SignPageSix>
               Text(
                 'Log in',
                 style: TextStyle(
-                    fontFamily: "Montserrat",
+                    fontFamily: fontName,
                     fontWeight: FontWeight.w200,
                     fontSize: 35),
               ),
               Text(
                 'to continue.',
                 style: TextStyle(
-                    fontFamily: "Montserrat",
+                    fontFamily: fontName,
                     fontWeight: FontWeight.w200,
                     fontSize: 35),
               ),

@@ -9,6 +9,8 @@ import 'package:flutter_ui_nice/const/images_const.dart';
 import 'package:flutter_ui_nice/const/size_const.dart';
 import 'package:flutter_ui_nice/const/string_const.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_arrow_button.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
+import 'package:flutter_ui_nice/const/page_str_const.dart';
 
 class SignPageFour extends StatefulWidget {
   @override
@@ -55,7 +57,7 @@ class _SignPageFourState extends State<SignPageFour> {
                           "WELCOME BACK!",
                           style: TextStyle(
                             letterSpacing: 4,
-                            fontFamily: "Montserrat",
+                            fontFamily: fontName,
                             fontWeight: FontWeight.bold,
                             fontSize: TEXT_LARGE_SIZE,
                           ),
@@ -64,14 +66,14 @@ class _SignPageFourState extends State<SignPageFour> {
                         Text(
                           'Log in',
                           style: TextStyle(
-                              fontFamily: "Montserrat",
+                              fontFamily: fontName,
                               fontWeight: FontWeight.w200,
                               fontSize: 40),
                         ),
                         Text(
                           'to continue.',
                           style: TextStyle(
-                              fontFamily: "Montserrat",
+                              fontFamily: fontName,
                               fontWeight: FontWeight.w200,
                               fontSize: 40),
                         ),
@@ -141,7 +143,10 @@ class _SignPageFourState extends State<SignPageFour> {
                 child: SignUpArrowButton(
                   icon: IconData(0xe901, fontFamily: 'Icons'),
                   iconSize: 9,
-                  onTap: () => print("Signup Tapped"),
+                  onTap: () {
+                    print("Signup Page 4 Tapped");
+                    Navigator.pushReplacementNamed(context, SIGN_UP_PAGES[4]);
+                  },
                 ),
               ),
             ],
@@ -165,7 +170,7 @@ class _SignPageFourState extends State<SignPageFour> {
         labelText: fieldName,
         labelStyle: TextStyle(
           fontSize: TEXT_NORMAL_SIZE,
-          fontFamily: "Montserrat",
+          fontFamily: fontName,
           fontWeight: FontWeight.w400,
           letterSpacing: 1,
           height: 0,

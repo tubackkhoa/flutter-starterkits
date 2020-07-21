@@ -43,3 +43,15 @@ class SignUpImagePath {
   static const String SignUpPage_6_Bg = "$image_path/signup_page_6_bg.png";
   static const String SignUpPage_8_Bg = "$image_path/signup_page_8_bg.png";
 }
+
+class TabsImagePath {
+  static const String image_path = "assets/images/tabs";
+  static const String image_tab1 = "$image_path/tab_1.png";
+  static const String image_tab1_selected = "$image_path/tab_1s.png";
+  static const String image_tab2 = "$image_path/tab_2.png";
+  static const String image_tab2_selected = "$image_path/tab_2s.png";
+  static const String image_tab3 = "$image_path/tab_3.png";
+  static const String image_tab3_selected = "$image_path/tab_3s.png";
+  static const String image_tab4 = "$image_path/tab_4.png";
+  static const String image_tab4_selected = "$image_path/tab_4s.png";
+}

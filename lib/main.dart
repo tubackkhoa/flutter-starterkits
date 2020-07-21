@@ -5,6 +5,7 @@ import 'package:flutter_ui_nice/page/page_const.dart';
 import 'const/string_const.dart';
 import 'const/color_const.dart';
 import 'const/page_str_const.dart';
+import 'const/styles.dart';
 import "page/page_const.dart";
 import 'package:flutter/services.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: BLUE_DEEP,
         accentColor: YELLOW,
-        fontFamily: "Montserrat",
+        fontFamily: fontName,
       ),
       home: HomePage(),
       routes: {

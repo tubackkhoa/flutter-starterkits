@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_apbar.dart';
 import '../../const/gradient_const.dart';
+import '../../const/page_str_const.dart';
 import '../../const/styles.dart';
 import 'widgets/signup_profile_image_picker.dart';
 import 'widgets/signup_button.dart';
@@ -76,7 +77,9 @@ class SignPageNine extends StatelessWidget {
                 Positioned(
                   bottom: 16.0,
                   right: 18.9,
-                  child: signupButton('NEXT'),
+                  child: signupButton('NEXT', () {
+                    Navigator.pushReplacementNamed(context, SIGN_UP_PAGES[9]);
+                  }),
                 ),
               ],
             ),

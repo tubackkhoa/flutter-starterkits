@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import '../../const/gradient_const.dart';
+import '../../const/page_str_const.dart';
 import 'widgets/date_picker.dart';
 import 'widgets/gender_picker.dart';
 import 'widgets/location_picker.dart';
@@ -31,7 +32,10 @@ class SignPageTwo extends StatelessWidget {
             LocationPicker(),
             Container(
                 margin: EdgeInsets.only(top: 32.0),
-                child: Center(child: signupButton('NEXT')))
+                child: Center(
+                    child: signupButton('NEXT', () {
+                  Navigator.pushReplacementNamed(context, SIGN_UP_PAGES[2]);
+                })))
           ],
         ),
       ),

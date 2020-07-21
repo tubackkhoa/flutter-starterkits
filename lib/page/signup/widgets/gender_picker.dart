@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 
 class GenderPicker extends StatefulWidget {
   @override
@@ -45,7 +46,7 @@ class _GenderPickerState extends State<GenderPicker> {
         children: <Widget>[
           Text(
             'GENDER',
-            style: TextStyle(letterSpacing: 2.0, fontFamily: 'Montserrat'),
+            style: TextStyle(letterSpacing: 2.0, fontFamily: fontName),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +63,7 @@ class _GenderPickerState extends State<GenderPicker> {
                           letterSpacing: 3.0,
                           color: Color(0xff353535),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Montserrat'),
+                          fontFamily: fontName),
                     ),
                   ),
                 ),
@@ -77,7 +78,7 @@ class _GenderPickerState extends State<GenderPicker> {
                         letterSpacing: 3.0,
                         color: Color(0xff353535),
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat'),
+                        fontFamily: fontName),
                   ),
                 ),
               )

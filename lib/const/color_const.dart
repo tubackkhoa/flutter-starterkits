@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 
 const MAIN_COLOR = Color(0xFF303030);
 const DARK_COLOR = Color(0xFFBDBDBD);
+const LIGHT_COLOR = Color(0xFF4A6572);
 const BOTTOM_COLORS = [MAIN_COLOR, DARK_COLOR];
 const YELLOW = Color(0xfffbed96);
 const BLUE = Color(0xffabecd6);

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
 
-Widget signupButton(title) {
+Widget signupButton(title, onTap) {
   return InkWell(
-    onTap: () {},
+    onTap: onTap,
     child: Container(
       padding: EdgeInsets.symmetric(horizontal: 48.0, vertical: 18.0),
       decoration: BoxDecoration(
@@ -28,7 +29,7 @@ Widget signupButton(title) {
         style: TextStyle(
             color: Color(0xffF1EA94),
             fontWeight: FontWeight.bold,
-            fontFamily: 'Montserrat'),
+            fontFamily: fontName),
       ),
     ),
   );

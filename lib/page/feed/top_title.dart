@@ -47,12 +47,22 @@ class TopTitleBar extends StatelessWidget {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Image.asset(leftImage,
-                      width: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT),
-                      height: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT)),
-                  Image.asset(rightImage,
-                      width: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT),
-                      height: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT))
+                  InkWell(
+                    child: Image.asset(leftImage,
+                        width: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT),
+                        height: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT)),
+                    onTap: () {
+                      print("Drawer open");
+                    },
+                  ),
+                  InkWell(
+                    child: Image.asset(rightImage,
+                        width: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT),
+                        height: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT)),
+                    onTap: () {
+                      print("Search press");
+                    },
+                  ),
                 ]),
           )
         ],

@@ -4,6 +4,8 @@ import 'package:flutter_ui_nice/const/icons.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_apbar.dart';
 import 'package:flutter_ui_nice/page/signup/widgets/signup_arrow_button.dart';
 
+import '../../const/page_str_const.dart';
+
 class SignPageFive extends StatefulWidget {
   @override
   _SignPageFiveState createState() => _SignPageFiveState();
@@ -231,7 +233,11 @@ class _SignPageFiveState extends State<SignPageFive> {
                         fontFamily: "Icons",
                       ),
                       iconSize: 10,
-                      onTap: () => print("Login tapped"),
+                      onTap: () {
+                        print("Login tapped");
+                        Navigator.pushReplacementNamed(
+                            context, PROFILE_PAGES[0]);
+                      },
                     ),
                   ),
                 ],
