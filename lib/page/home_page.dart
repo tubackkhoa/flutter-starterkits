@@ -16,6 +16,11 @@ import 'package:flutter_ui_nice/util/GradientUtil.dart';
 import 'package:flutter_ui_nice/view/BottomBarView.dart';
 import 'package:flutter_ui_nice/view/drawer.dart';
 
+import 'package:flutter_ui_nice/page/page_const.dart';
+import 'package:flutter_ui_nice/page/profile/ProfilePageOne.dart';
+import 'package:flutter_ui_nice/page/profile/ProfilePageTwo.dart';
+import 'package:flutter_ui_nice/page/shopping/ShopPageNineteen.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,7 +28,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final _scaffoldState = GlobalKey<ScaffoldState>();
-
+  int pageIndex = 0;
+  List<Widget> pages;
   AnimationController animationController;
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
@@ -46,10 +52,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 SizedBox(
                   width: 6.0,
                 ),
-                Text(StringConst.APP_NAME,
-                    style: TextStyle(
-                      color: TEXT_BLACK_LIGHT,
-                    ))
+                Text(
+                  StringConst.APP_NAME,
+                  style: TextStyle(
+                    color: TEXT_BLACK_LIGHT,
+                  ),
+                )
               ],
             ),
           ),
@@ -83,17 +91,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     fontSize: TEXT_NORMAL_SIZE,
                     fontWeight: FontWeight.w700),
               ),
-            ]
-//            Divider(
-//              height: 1.0,
-//              color: Colors.white,
-//            )
-//          ],
-            ),
+            ]),
       ),
       onTap: () {
 //        Navigator.pop(context);
-        Navigator.pushNamed(context, "$item");
+        Navigator.pushNamed(context, item);
       },
     );
   }
@@ -256,24 +258,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         }, childCount: list.length),
       );
 
-  Widget _streamBuild(context) {
-    var controller = MenuController();
-    return StreamBuilder(
-      builder: (context, shot) {
-        return shot.hasData
-            ? CustomScrollView(
-                slivers: <Widget>[
-                  _topBar(),
-                  SliverPadding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 60),
-                      sliver: _gridView(context, shot.data))
-                ],
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              );
-      },
-      stream: controller.menuItems,
+  var controller = MenuController();
+  Widget _streamBuild() {
+    return CustomScrollView(
+      slivers: <Widget>[
+        _topBar(),
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 60),
+          sliver: _gridView(context, controller.menuItems),
+        )
+      ],
     );
   }
 
@@ -287,27 +281,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
-              animationController.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  // tabBody =
-                  //     MyDiaryScreen(animationController: animationController);
-                });
+            animationController.reverse().then<dynamic>((data) {
+              if (!mounted) {
+                return;
+              }
+              setState(() {
+                pageIndex = index;
               });
-            } else if (index == 1 || index == 3) {
-              animationController.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  // tabBody =
-                  //     TrainingScreen(animationController: animationController);
-                });
-              });
-            }
+            });
           },
         ),
       ],
@@ -320,7 +301,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Scaffold(
         drawer: AppDrawer(),
         key: _scaffoldState,
-        body: Stack(children: [_streamBuild(context), bottomBar()]),
+        body: Stack(children: [pages[pageIndex], bottomBar()]),
       ),
     );
   }
@@ -331,6 +312,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       tab.isSelected = false;
     });
     tabIconsList[0].isSelected = true;
+    pages = [
+      _streamBuild(),
+      ProfilePageOne(),
+      ProfilePageTwo(),
+      ShopPageNineteen(),
+    ];
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);

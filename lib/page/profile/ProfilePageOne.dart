@@ -194,11 +194,13 @@ class _ProfileState extends State<ProfilePageOne> {
         ),
         child: Column(
           children: <Widget>[
-            TopBar(
-              leftIcon: ProfileImages.arrow_left,
-              title: ProfileStrings.STRING_PROFILE,
-              onLeftIconPressed: () => Navigator.pop(context),
-            ),
+            Navigator.canPop(context)
+                ? TopBar(
+                    leftIcon: ProfileImages.arrow_left,
+                    title: ProfileStrings.STRING_PROFILE,
+                    onLeftIconPressed: () => Navigator.pop(context),
+                  )
+                : SizedBox.shrink(),
             Expanded(
               child: ListView(
                 children: <Widget>[

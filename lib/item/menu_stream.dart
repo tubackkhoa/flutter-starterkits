@@ -59,12 +59,10 @@ const _IMAGE_PATHS = [
 ];
 
 class MenuController {
-  final controller = StreamController<List<Menu>>();
-
-  Stream<List<Menu>> get menuItems => controller.stream;
+  List<Menu> menuItems;
 
   MenuController({List<Menu> menus}) {
-    controller.add(menus ?? _defaultMenus());
+    menuItems = menus ?? _defaultMenus();
   }
 
   static String _title(index) {

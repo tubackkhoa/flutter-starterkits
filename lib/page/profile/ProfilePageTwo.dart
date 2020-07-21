@@ -66,11 +66,13 @@ class _ProfileState extends State<ProfilePageTwo> {
         ),
         child: Column(
           children: <Widget>[
-            TopBar(
-              leftIcon: ProfileImages.arrow_left,
-              title: this.title,
-              onLeftIconPressed: () => Navigator.pop(context),
-            ),
+            Navigator.canPop(context)
+                ? TopBar(
+                    leftIcon: ProfileImages.arrow_left,
+                    title: this.title,
+                    onLeftIconPressed: () => Navigator.pop(context),
+                  )
+                : SizedBox.shrink(),
             Expanded(
               child: ListView(
                 children: <Widget>[

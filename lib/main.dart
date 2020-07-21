@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_nice/page/navigation/navigation1/coordinator.dart';
 import 'package:flutter_ui_nice/page/page_const.dart';
 
-import 'const/string_const.dart';
-import 'const/color_const.dart';
-import 'const/page_str_const.dart';
-import 'const/styles.dart';
-import "page/page_const.dart";
+import 'package:flutter_ui_nice/const/page_str_const.dart';
+import 'package:flutter_ui_nice/const/string_const.dart';
+import 'package:flutter_ui_nice/const/color_const.dart';
+import 'package:flutter_ui_nice/const/styles.dart';
+import 'package:flutter_ui_nice/page/chat/ChatPageOne.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
@@ -55,6 +55,8 @@ class MyApp extends StatelessWidget {
 
         SHOPPING_PAGES[17]: (context) => ShopPageEighteen(),
         SHOPPING_PAGES[18]: (context) => ShopPageNineteen(),
+
+        CHAT_PAGES[0]: (context) => ChatPageOne(user: "tupt", room: "Novalex"),
 
         NAVIGATION_PAGES[0]: (context) => NavigationOneCoordinator(),
         //FIXME there are other pages to jump with 'page_str_const.dart',there should be make by manager

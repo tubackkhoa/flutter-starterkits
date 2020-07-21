@@ -245,7 +245,9 @@ class _ShopNineteenState extends State<ShopPageNineteen> {
                 )),
           )
         ]),
-        Container(margin: EdgeInsets.only(top: 20), child: _backButton())
+        Navigator.canPop(context)
+            ? Container(margin: EdgeInsets.only(top: 20), child: _backButton())
+            : SizedBox.shrink()
       ],
     ));
   }

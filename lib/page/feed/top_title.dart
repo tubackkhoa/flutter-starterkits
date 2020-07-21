@@ -4,13 +4,13 @@
 /// Email: niebin312@gmail.com
 ///
 import "package:flutter/material.dart";
-import 'feed_const.dart';
+import 'package:flutter_ui_nice/page/feed/feed_const.dart';
 import 'package:flutter_ui_nice/const/color_const.dart';
 import 'package:flutter_ui_nice/util/SizeUtil.dart';
 
 class TopTitleBar extends StatelessWidget {
   TopTitleBar(
-      {this.leftImage = FeedImage.more_circle,
+      {this.leftImage = FeedImage.feed12_plus,
       this.rightImage = FeedImage.search_circle});
 
   final String leftImage;
@@ -53,6 +53,7 @@ class TopTitleBar extends StatelessWidget {
                         height: SizeUtil.getAxisY(CIRCLE_BUTTON_HEIGHT)),
                     onTap: () {
                       print("Drawer open");
+                      Navigator.pop(context);
                     },
                   ),
                   InkWell(
